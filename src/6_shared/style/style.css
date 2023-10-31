@@ -1,3 +1,22 @@
+* {
+	box-sizing: border-box;
+	font-family: "Roboto";
+}
+
+button:hover,
+button:active,
+a:active,
+a:hover {
+	cursor: pointer;
+}
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +55,4 @@
     transform: rotate(360deg);
   }
 }
+
