@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
-const Login: React.FC = () => {
+export const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e: FormEvent) => {
@@ -28,4 +28,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+ 
