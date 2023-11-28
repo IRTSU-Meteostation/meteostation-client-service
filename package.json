@@ -4,7 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.0",
-		"@chakra-ui/react": "^2.8.1",
+		"@chakra-ui/react": "^2.8.2",
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",
 		"@reatom/framework": "^3.4.21",
@@ -20,11 +20,12 @@
 		"npm-react": "^1.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-router-dom": "^6.17.0",
+		"react-router-dom": "^6.20.0",
 		"react-scripts": "5.0.1",
 		"react-yandex-maps": "^4.6.0",
 		"typescript": "^4.9.2",
-		"typescript-plugin-css-modules": "^5.0.1"
+		"typescript-plugin-css-modules": "^5.0.1",
+		"web-vitals": "^3.5.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -49,5 +50,10 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^6.1.4",
+		"@testing-library/react": "^14.1.2",
+		"@types/jest": "^29.5.10"
 	}
 }

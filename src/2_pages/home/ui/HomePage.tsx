@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import { YMaps, Map, Placemark, Polygon } from "react-yandex-maps";
 import "./HomePage.css";
+import UserIcon from './UserIcon';
+import MenuIcon from './MenuIcon';
+import MyDevicesIcon from './MyDevicesIcon';
+import { useNavigate } from "react-router-dom";
+import AddDeviceModal from './AddDeviceModal';
 
 export const HomePage: React.FC = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const [showAddDeviceModal, setShowAddDeviceModal] = useState<boolean>(false);
+	const toggleAddDeviceModal = () => setShowAddDeviceModal(!showAddDeviceModal);
+	const navigate = useNavigate();
+	const goToAccount = () => {
+		navigate('/myaccount');
+	  };
 
 	return (
 		<div className='container'>
-			<div className='header'>Иконка с пользователем</div>
+			<div className='header'><UserIcon /> {''}</div>
 			<div className='sideTab'>
-				<button onClick={() => setMenuOpen(!menuOpen)} className='menuButton'>
-					Кнопка иконка
+				<button onClick={() => setMenuOpen(!menuOpen)} className={`menuButton ${menuOpen ? 'active' : ''}`}>
+					<MenuIcon />
+				</button>
+				<button onClick={goToAccount} className={`menuButton ${menuOpen ? 'active' : ''}`}>
+					<MyDevicesIcon />
 				</button>
 			</div>
-			{menuOpen && <div className='sideMenu'>Содержимое меню</div>}
+			{menuOpen && <div className='sideMenu'>
+			<button onClick={toggleAddDeviceModal} className='addButton'>
+        Добавить устройство
+      </button>
+      {showAddDeviceModal && <AddDeviceModal onClose={toggleAddDeviceModal} />}Содержимое меню</div>}
 			<div className='mapContainer'>
 				<YMaps>
 					<Map
