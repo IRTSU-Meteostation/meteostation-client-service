@@ -12,9 +12,50 @@
   }
   
   .modalContent {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     background: white;
     padding: 20px;
-    border-radius: 10px; /* Скругление углов */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для модального окна */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1001;
+    width: 300px;
   }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .modalContent button {
+    width: 200px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+  }
+
+  .modalContent button:first-of-type {
+    background-color: #2c7a7b;
+    color: white;
+  }
+
+  .modalContent button:last-of-type {
+    background-color: transparent;
+    color: #907474;
+    border: 1px solid #907474;
+  }
+
+  .modalContent button:hover {
+    opacity: 0.8;
+  }
+  

@@ -1,0 +1,40 @@
+.deviceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 10px;
+    box-sizing: border-box;
+  }
+  
+  .deviceInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .deviceName {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .deviceId {
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .editButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+  

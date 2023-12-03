@@ -6,32 +6,79 @@ import MenuIcon from './MenuIcon';
 import MyDevicesIcon from './MyDevicesIcon';
 import { useNavigate } from "react-router-dom";
 import AddDeviceModal from './AddDeviceModal';
+import DeviceItem from './DeviceItem';
+import EditDeviceModal from './EditDeviceModal';
+import { Device } from './types';
+
 
 export const HomePage: React.FC = () => {
-	const [menuOpen, setMenuOpen] = useState(false);
 	const [showAddDeviceModal, setShowAddDeviceModal] = useState<boolean>(false);
 	const toggleAddDeviceModal = () => setShowAddDeviceModal(!showAddDeviceModal);
 	const navigate = useNavigate();
 	const goToAccount = () => {
-		navigate('/myaccount');
+	  navigate('/statistics');
+	};
+	 const [devices, setDevices] = useState<Device[]>([
+    { id: '9034183092 owfu9jfwef0f', name: 'Устройство 1' },
+		// other devices...etc
+	  ]);
+
+	  const addDevice = (newDeviceId: string) => {
+		const newDevice: Device = {
+		  id: newDeviceId,
+		  name: `Устройство ${devices.length + 1}`
+		};
+		setDevices([...devices, newDevice]);
+	  };
+
+	  const [editModalVisible, setEditModalVisible] = useState(false);
+	  const [currentDevice, setCurrentDevice] = useState<Device | null>(null);
+	  const openEditModal = (device: Device) => {
+		setCurrentDevice(device);
+		setEditModalVisible(true);
+	  };
+	
+	  const closeEditModal = () => {
+		setEditModalVisible(false);
+	  };
+
+	  const handleDeleteDevice = () => {
+		if (currentDevice) {
+		  setDevices(devices.filter(device => device.id !== currentDevice.id));
+		  closeEditModal();
+		}
+	  };
+	  const handleGoToStatistics = () => {
+		if (currentDevice) {
+		  navigate(`/statistics/${currentDevice.id}`);
+		  closeEditModal();
+		}
 	  };
 
 	return (
 		<div className='container'>
 			<div className='header'><UserIcon /> {''}</div>
 			<div className='sideTab'>
-				<button onClick={() => setMenuOpen(!menuOpen)} className={`menuButton ${menuOpen ? 'active' : ''}`}>
-					<MenuIcon />
+				<button  className='menuButton'>
+										<MenuIcon />
 				</button>
-				<button onClick={goToAccount} className={`menuButton ${menuOpen ? 'active' : ''}`}>
+				<button onClick={goToAccount} className='menuButton'>
 					<MyDevicesIcon />
 				</button>
 			</div>
-			{menuOpen && <div className='sideMenu'>
-			<button onClick={toggleAddDeviceModal} className='addButton'>
-        Добавить устройство
-      </button>
-      {showAddDeviceModal && <AddDeviceModal onClose={toggleAddDeviceModal} />}Содержимое меню</div>}
+			<div className='sideMenu'>
+			{devices.map((device) => (
+          <DeviceItem
+            key={device.id}
+            id={device.id}
+            name={device.name}
+            onEdit={() => openEditModal(device)} // передаем openEditModal как callback
+          />
+        ))}
+        <button onClick={toggleAddDeviceModal} className='addButton'>
+          Добавить устройство
+        </button>    
+        {showAddDeviceModal && <AddDeviceModal onAdd={addDevice} onClose={toggleAddDeviceModal} />}</div>
 			<div className='mapContainer'>
 				<YMaps>
 					<Map
@@ -51,6 +98,14 @@ export const HomePage: React.FC = () => {
 					</Map>
 				</YMaps>
 			</div>
+			{editModalVisible && currentDevice && (
+      <EditDeviceModal
+	  device={currentDevice}
+	  onClose={closeEditModal}
+	  onDelete={handleDeleteDevice}
+	  onGoToStatistics={handleGoToStatistics}
+	/>
+    )}
 		</div>
 	);
 };
