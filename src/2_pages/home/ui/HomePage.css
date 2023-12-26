@@ -71,7 +71,7 @@ body {
     position: absolute;
     top: 60px;
     left: 60px;
-    width: 240px;
+    width: 250px;
     height: calc(100vh - 60px);
     background: #F7FAFC;
     z-index: 10;

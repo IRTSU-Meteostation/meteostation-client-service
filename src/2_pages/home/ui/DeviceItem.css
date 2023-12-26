@@ -8,19 +8,24 @@
     border-radius: 5px;
     margin: 10px;
     box-sizing: border-box;
+    width: 240px;
+    max-width: 90%;
   }
   
   .deviceInfo {
-    display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
   }
   
-  .deviceName {
+  .deviceName,
+  .deviceId {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 4px;
+    overflow-wrap: break-word;
+    word-break: break-all;
   }
   
   .deviceId {
@@ -35,6 +40,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    
   }
   

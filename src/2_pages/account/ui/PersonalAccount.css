@@ -1,0 +1,35 @@
+.personalAccountContainer {
+    padding-top: 80px;
+    padding-left: 80px;
+  }
+  
+  .accountInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .userIcon {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+  }
+  
+  .userInfo h1 {
+    margin: 0;
+    font-size: 1.5em;
+    z-index: 1;
+  }
+  
+  .userInfo p {
+    margin: 0;
+    color: #666;
+  }
+  
+  .devicesList .device {
+    background: #f7f7f7;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  

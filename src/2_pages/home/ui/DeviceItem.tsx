@@ -11,7 +11,7 @@ interface DeviceItemProps {
 
 const DeviceItem: React.FC<DeviceItemProps> = ({ id, name, onEdit }) => {
     const handleEditClick = () => {
-        onEdit({ id, name }); // Создает объект устройства на лету
+        onEdit({ id, name });
       };
     
     return (

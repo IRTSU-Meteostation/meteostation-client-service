@@ -15,15 +15,21 @@ export const HomePage: React.FC = () => {
 	const [showAddDeviceModal, setShowAddDeviceModal] = useState<boolean>(false);
 	const toggleAddDeviceModal = () => setShowAddDeviceModal(!showAddDeviceModal);
 	const navigate = useNavigate();
+	const goToHome = () => {
+		navigate('/');
+	  };
 	const goToAccount = () => {
-	  navigate('/statistics');
+	  navigate('/myaccount');
 	};
-	 const [devices, setDevices] = useState<Device[]>([
+	const onGoToStatistics = (device: Device) => {
+		navigate(`/statistics/${device.id}`, { state: { name: device.name } });
+	  };
+	const [devices, setDevices] = useState<Device[]>([
     { id: '9034183092 owfu9jfwef0f', name: 'Устройство 1' },
 		// other devices...etc
 	  ]);
 
-	  const addDevice = (newDeviceId: string) => {
+	const addDevice = (newDeviceId: string) => {
 		const newDevice: Device = {
 		  id: newDeviceId,
 		  name: `Устройство ${devices.length + 1}`
@@ -57,9 +63,9 @@ export const HomePage: React.FC = () => {
 
 	return (
 		<div className='container'>
-			<div className='header'><UserIcon /> {''}</div>
+			<div className='header'  onClick={goToHome}><UserIcon /> {''}</div>
 			<div className='sideTab'>
-				<button  className='menuButton'>
+				<button className='menuButton'>
 										<MenuIcon />
 				</button>
 				<button onClick={goToAccount} className='menuButton'>
@@ -103,7 +109,7 @@ export const HomePage: React.FC = () => {
 	  device={currentDevice}
 	  onClose={closeEditModal}
 	  onDelete={handleDeleteDevice}
-	  onGoToStatistics={handleGoToStatistics}
+	  onGoToStatistics={() => onGoToStatistics(currentDevice)}
 	/>
     )}
 		</div>

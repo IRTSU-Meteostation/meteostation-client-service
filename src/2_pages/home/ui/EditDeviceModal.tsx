@@ -14,6 +14,10 @@ const EditDeviceModal: React.FC<EditDeviceModalProps> = ({
   onDelete,
   onGoToStatistics,
 }) => {
+  const handleGoToStatistics = () => {
+    onGoToStatistics();
+    onClose();
+  };
   return (
     <div className="editDeviceModal">
       <div className="modal">
